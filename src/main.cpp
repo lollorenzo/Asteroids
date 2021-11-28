@@ -27,14 +27,18 @@ int main() {
         {
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
+            {
                 window.close();
+            }
         }
 
         // clear the window with black color
         window.clear(sf::Color::Black);
 
-        // Aggiorna stato
+        // Get time delta and reset the clock
         const sf::Time time_elapsed = clock.restart();
+
+        // Aggiorna stato
         asteroid.update(time_elapsed);
         asteroid.draw(window);
 

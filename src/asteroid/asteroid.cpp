@@ -9,7 +9,7 @@ Asteroid::Asteroid()
 {
 	x_speed = ((static_cast<float>(std::rand()) / RAND_MAX) * (100));
 	y_speed = ((static_cast<float>(std::rand()) / RAND_MAX) * (100));
-	rot_speed = ((static_cast<float>(std::rand()) / RAND_MAX) * (2));
+	rot_speed = ((static_cast<float>(std::rand()) / RAND_MAX) * (360));
 	const float scale = 0.2f + ((static_cast<float>(std::rand()) / RAND_MAX) * (0.8f));
 
 	sprite.setTexture(texture);
@@ -28,8 +28,7 @@ void Asteroid::update(sf::Time t1)
 	sprite.move(delta_x, delta_y);
 
 	// update angle using rot_speed
-	static const float RAD_DEG_SCALE_FACTOR = (180 / 3.1415f);
-	const float delta_angle = (delta_time_in_sec * rot_speed) * RAD_DEG_SCALE_FACTOR;
+	const float delta_angle = delta_time_in_sec * rot_speed;
 	sprite.rotate(delta_angle);
 }
 

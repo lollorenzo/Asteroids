@@ -11,6 +11,6 @@ public:
 private:
 	static const CustomTexture texture;		// One shared texture to speedup display operation
 	float x_speed, y_speed;					// speed mesured in Pixel per sec (orig top left)
-	float rot_speed;						// speed mesured in RAD
+	float rot_speed;						// speed mesured in degrees per sec
 	sf::Sprite sprite;
 };

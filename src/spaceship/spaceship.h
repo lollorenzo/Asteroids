@@ -11,6 +11,8 @@ public:
 private:
 	static const CustomTexture texture;		// One shared texture to speedup display operation
 	sf::Vector2f speed;						// speed mesured in Pixel per sec (orig top left)
-	const int accelleration;
+	const float accelleration_step;			// Acceleration step in pixel per sec^2
+	const float rotation_step;				// Rotation step in degrees per sec
+	const float friction_coefficent;		// Percentage of speed decrease per sec
 	sf::Sprite sprite;
 };
