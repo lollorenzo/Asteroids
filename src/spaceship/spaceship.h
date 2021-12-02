@@ -2,17 +2,26 @@
 
 #include <SFML/Graphics.hpp>
 #include "common/custom_texture.h"
+#include "common/game_entity.h"
 
-class Spaceship {
+class Spaceship : public GameEntity
+{
 public:
-	Spaceship();
-	void update(sf::Time t1);
+	Spaceship(const sf::Vector2u& window_size);
+	void update(const sf::Time& t1);
 	void draw(sf::RenderWindow& window) const;
+
+	// Inherited via GameEntity
+	virtual const sf::Image& GetImage() const override;
+	virtual void HasBeenHit() override;
+
 private:
+	void update_motion(const sf::Time& t1);
+
 	static const CustomTexture texture;		// One shared texture to speedup display operation
-	sf::Vector2f speed;						// speed mesured in Pixel per sec (orig top left)
+	sf::Vector2f speed;						// speed measured in Pixel per sec (orig top left)
 	const float accelleration_step;			// Acceleration step in pixel per sec^2
 	const float rotation_step;				// Rotation step in degrees per sec
 	const float friction_coefficent;		// Percentage of speed decrease per sec
-	sf::Sprite sprite;
+	const float brake_coefficent;			// Percentage of speed decrease per sec when brake will be pulled
 };

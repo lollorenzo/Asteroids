@@ -10,8 +10,13 @@ set(
     ${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/common/custom_texture.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/common/custom_texture.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/common/game_entity.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/common/collision_manager.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/common/collision_manager.h
     ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid_manager.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid_manager.h
     ${CMAKE_CURRENT_LIST_DIR}/src/spaceship/spaceship.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/spaceship/spaceship.h
 )

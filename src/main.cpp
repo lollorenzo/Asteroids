@@ -1,20 +1,22 @@
 #include <SFML/Graphics.hpp>
-#include <list>
-#include "asteroid/asteroid.h"
+#include <SFML/System/Time.hpp>
+#include "common/collision_manager.h"
+#include "asteroid/asteroid_manager.h"
 #include "spaceship/spaceship.h"
 
 int main() {
 
-    const int SCREEN_WIDTH = 1024;
-    const int SCREEN_HEIGHT = (SCREEN_WIDTH * 9) / 16;
-    sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "My window");
+    constexpr int SCREEN_WIDTH = 1024;
+    constexpr int SCREEN_HEIGHT = (SCREEN_WIDTH * 9) / 16;
+    sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "My window", sf::Style::Titlebar | sf::Style::Close);
 
     // Initialize the game random seed
     // use current time as seed for random generator
     std::srand(std::time(nullptr));
+    
+    AsteroidManager asteroid_manager{window.getSize()};
 
-    Asteroid asteroid{};
-    Spaceship spaceship{};
+    Spaceship spaceship{window.getSize()};
 
     sf::Clock clock;
 
@@ -25,10 +27,19 @@ int main() {
         sf::Event event;
         while (window.pollEvent(event))
         {
+			// "close requested" event: we close the window
+			if (event.type == sf::Event::Closed)
+			{
+				window.close();
+			}
+
             // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::KeyPressed)
             {
-                window.close();
+                if (event.key.code == sf::Keyboard::Escape)
+                {
+                    window.close();
+                }
             }
         }
 
@@ -39,11 +50,18 @@ int main() {
         const sf::Time time_elapsed = clock.restart();
 
         // Aggiorna stato
-        asteroid.update(time_elapsed);
-        asteroid.draw(window);
+        asteroid_manager.update(time_elapsed);
+		asteroid_manager.draw(window);
 
         spaceship.update(time_elapsed);
         spaceship.draw(window);
+
+        //sf::Vector2f tmp{ spaceship.GetBoundingBox().width, spaceship.GetBoundingBox().height };
+        //sf::RectangleShape rectangle(tmp);
+        //rectangle.setPosition(spaceship.GetBoundingBox().left, spaceship.GetBoundingBox().top);
+        //window.draw(rectangle);
+
+        CollisionManager::ManageCollision(spaceship, asteroid_manager.get_asteroids());
 
         // end the current frame
         window.display();

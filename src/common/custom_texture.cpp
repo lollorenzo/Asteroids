@@ -3,8 +3,8 @@
 CustomTexture::CustomTexture(const std::string& file_path) :
 	sf::Texture()
 {
-	sf::Texture prova;
-	if (!loadFromFile(file_path))
+	image.loadFromFile(file_path);
+	if (!loadFromImage(image))
 	{
 		// Manage the error correctly
 	}
