@@ -15,6 +15,6 @@ public:
 	void draw(sf::RenderWindow& window) const;
 private:
 	container_type asteroids;
-	const sf::Vector2u& windows_size;
+	const sf::Vector2u windows_size;
 	float time_elapsed_acc;
 };

@@ -1,8 +1,10 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Time.hpp>
+#include <ctime>
 #include "common/collision_manager.h"
 #include "asteroid/asteroid_manager.h"
 #include "spaceship/spaceship.h"
+
 
 int main() {
 
@@ -12,7 +14,7 @@ int main() {
 
     // Initialize the game random seed
     // use current time as seed for random generator
-    std::srand(std::time(nullptr));
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
     
     AsteroidManager asteroid_manager{window.getSize()};
 
@@ -51,16 +53,12 @@ int main() {
 
         // Aggiorna stato
         asteroid_manager.update(time_elapsed);
-		asteroid_manager.draw(window);
-
         spaceship.update(time_elapsed);
+
+		asteroid_manager.draw(window);
         spaceship.draw(window);
 
-        //sf::Vector2f tmp{ spaceship.GetBoundingBox().width, spaceship.GetBoundingBox().height };
-        //sf::RectangleShape rectangle(tmp);
-        //rectangle.setPosition(spaceship.GetBoundingBox().left, spaceship.GetBoundingBox().top);
-        //window.draw(rectangle);
-
+        // Manage collisions between the spaceship and the asteroids
         CollisionManager::ManageCollision(spaceship, asteroid_manager.get_asteroids());
 
         // end the current frame
