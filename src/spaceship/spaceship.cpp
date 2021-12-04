@@ -9,7 +9,8 @@ Spaceship::Spaceship(const sf::Vector2u& window_size) :
 	accelleration_step { 80.0f },
 	rotation_step{ 180.0f },
 	friction_coefficent{ 0.70f },
-	brake_coefficent{ 0.85f }
+	brake_coefficent{ 0.85f },
+	health_bar{ 100, 10 }
 {
 	sprite.setTexture(texture);
 	sprite.setPosition(window_size.x / 2.0f, window_size.y / 2.0f);
@@ -64,19 +65,20 @@ void Spaceship::update_motion(const sf::Time& t1)
 	sprite.move(speed * t1.asSeconds());
 }
 
+void Spaceship::HasBeenHit()
+{
+	// React to an hit
+	health_bar.Decrease();
+	return;
+}
+
 const sf::Image& Spaceship::GetImage() const
 {
 	return texture.GetImage();
 }
 
-void Spaceship::HasBeenHit()
-{
-	// React to an hit
-	int b = 0;
-	return;
-}
-
 void Spaceship::draw(sf::RenderWindow& window) const
 {
+	health_bar.Draw(window);
 	window.draw(sprite);
 }

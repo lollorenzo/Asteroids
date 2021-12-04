@@ -2,6 +2,7 @@
 #include <SFML/System/Time.hpp>
 #include <ctime>
 #include "common/collision_manager.h"
+#include "common/custom_texture.h"
 #include "asteroid/asteroid_manager.h"
 #include "spaceship/spaceship.h"
 

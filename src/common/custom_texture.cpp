@@ -1,13 +1,10 @@
-#include "custom_texture.h"
+#include "custom_font.h"
 
-CustomTexture::CustomTexture(const std::string& file_path) :
-	sf::Texture()
+CustomFont::CustomFont(const std::string& file_path) :
+	sf::Font()
 {
-	image.loadFromFile(file_path);
-	if (!loadFromImage(image))
+	if (!loadFromFile(file_path))
 	{
 		// Manage the error correctly
 	}
-
-	setSmooth(true);
 }

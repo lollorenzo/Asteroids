@@ -10,8 +10,12 @@ set(
     ${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/common/custom_texture.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/common/custom_texture.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/common/custom_font.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/common/custom_font.h
     ${CMAKE_CURRENT_LIST_DIR}/src/common/game_entity.h
-    ${CMAKE_CURRENT_LIST_DIR}/src/common/collision_manager.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/common/game_entity.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/common/health_bar.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/common/health_bar.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/common/collision_manager.h
     ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid.h
