@@ -17,6 +17,22 @@ set(
     ${CMAKE_CURRENT_LIST_DIR}/src/common/health_bar.h
     ${CMAKE_CURRENT_LIST_DIR}/src/common/health_bar.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/common/collision_manager.h
+    # Game Engine
+    ${CMAKE_CURRENT_LIST_DIR}/src/game_engine/game_engine.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/game_engine/game_engine.h
+    # Assets Manager
+    ${CMAKE_CURRENT_LIST_DIR}/src/asset_manager/asset_manager.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/asset_manager/asset_manager.h
+    # Scenes
+    ${CMAKE_CURRENT_LIST_DIR}/src/scenes/scene.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/scenes/menu_scene.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/scenes/menu_scene.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/scenes/play_scene.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/scenes/play_scene.h
+    # Action
+    ${CMAKE_CURRENT_LIST_DIR}/src/action/action.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/action/action.h
+
     ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid.h
     ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid_manager.cpp
