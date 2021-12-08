@@ -8,21 +8,28 @@ project(Asteroids)
 set(
     SOURCE_FILES
     ${CMAKE_CURRENT_LIST_DIR}/src/main.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/common/custom_texture.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/common/custom_texture.h
-    ${CMAKE_CURRENT_LIST_DIR}/src/common/custom_font.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/common/custom_font.h
-    ${CMAKE_CURRENT_LIST_DIR}/src/common/game_entity.h
-    ${CMAKE_CURRENT_LIST_DIR}/src/common/game_entity.cpp
+    # Common
     ${CMAKE_CURRENT_LIST_DIR}/src/common/health_bar.h
     ${CMAKE_CURRENT_LIST_DIR}/src/common/health_bar.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/common/collision_manager.h
     # Game Engine
     ${CMAKE_CURRENT_LIST_DIR}/src/game_engine/game_engine.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/game_engine/game_engine.h
-    # Assets Manager
-    ${CMAKE_CURRENT_LIST_DIR}/src/asset_manager/asset_manager.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/asset_manager/asset_manager.h
+    # Entities
+    ${CMAKE_CURRENT_LIST_DIR}/src/entities/game_entity.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/entities/game_entity.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/entities/asteroid.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/entities/asteroid.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/entities/bullet.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/entities/bullet.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/entities/spaceship.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/entities/spaceship.h
+    # Managers
+    ${CMAKE_CURRENT_LIST_DIR}/src/managers/asset_manager.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/managers/asset_manager.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/managers/asteroid_manager.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/managers/asteroid_manager.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/managers/bullet_manager.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/managers/bullet_manager.h
     # Scenes
     ${CMAKE_CURRENT_LIST_DIR}/src/scenes/scene.h
     ${CMAKE_CURRENT_LIST_DIR}/src/scenes/menu_scene.cpp
@@ -32,19 +39,6 @@ set(
     # Action
     ${CMAKE_CURRENT_LIST_DIR}/src/action/action.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/action/action.h
-    # Asteroids
-    ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid.h
-    ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid_manager.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid_manager.h
-    # Bullets
-    ${CMAKE_CURRENT_LIST_DIR}/src/bullet/bullet.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/bullet/bullet.h
-    ${CMAKE_CURRENT_LIST_DIR}/src/bullet/bullet_manager.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/bullet/bullet_manager.h
-
-    ${CMAKE_CURRENT_LIST_DIR}/src/spaceship/spaceship.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/src/spaceship/spaceship.h
 )
 
 # add the executable

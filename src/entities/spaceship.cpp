@@ -1,10 +1,10 @@
 #include <cmath>
 #include "spaceship.h"
 
-const CustomTexture Spaceship::texture{ "images/spaceship.png" };
-
-Spaceship::Spaceship(const sf::Vector2u& window_size) :
+Spaceship::Spaceship(const sf::Vector2u& window_size, const AssetManager& asset_manager) :
 	GameEntity{},
+	texture(asset_manager.GetTexture("spaceship")),
+	texture_image(asset_manager.GetImage("spaceship")),
 	sprite(),
 	speed{ 0.0f, 0.0f },
 	accelleration_step { 100.0f },
@@ -12,7 +12,7 @@ Spaceship::Spaceship(const sf::Vector2u& window_size) :
 	friction_coefficent{ 0.70f },
 	brake_coefficent{ 0.85f },
 	firing_frequency{ 0.20f },
-	health_bar{ 100, 10 },
+	health_bar{ asset_manager, 100, 10 },
 	bullet_manager(),
 	time_accumulator(0)
 {

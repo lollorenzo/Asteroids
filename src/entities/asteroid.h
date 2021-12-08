@@ -1,13 +1,19 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "common/custom_texture.h"
-#include "common/game_entity.h"
+#include "entities/game_entity.h"
+#include "managers/asset_manager.h"
 
-class Bullet : public GameEntity
+class Asteroid : public GameEntity
 {
 public:
-	Bullet(const sf::Vector2f& position, float rotation);
+	Asteroid(const sf::Vector2u& windows_size, const AssetManager& asset_manager);
+	Asteroid(const Asteroid& other) = default;
+	Asteroid(Asteroid&& other) = default;
+
+	Asteroid& operator=(const Asteroid& other);
+	Asteroid& operator=(Asteroid&& other);
+
 	void update(const sf::Time& t1);
 	void draw(sf::RenderWindow& window) const;
 	bool IsAlive() const { return alive; }
@@ -20,10 +26,10 @@ private:
 	virtual bool PixelLevelCollision(const sf::Vector2f& point) const override;
 	virtual const sf::FloatRect GetBoundingBox() const override;
 
-	sf::CircleShape shape;
+	const sf::Texture& texture;
+	const sf::Image& texture_image;
+	sf::Sprite sprite;
 	sf::Vector2f speed;						// speed measured in Pixel per sec (orig top left)
-	static const float speed_module;
-	static const float lifetime;
-	float time_elapsed;
+	float rot_speed;						// speed measured in degrees per sec
 	bool alive;								// :-)
 };

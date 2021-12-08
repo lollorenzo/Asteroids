@@ -12,6 +12,7 @@ public:
 
 	const sf::Font& GetFont(const std::string& name) const;
 	const sf::Texture& GetTexture(const std::string& name) const;
+	const sf::Image& GetImage(const std::string& name) const;
 
 private:
 	template <typename asset_type>
@@ -19,4 +20,5 @@ private:
 
 	asset_container_type<sf::Font> m_fonts;
 	asset_container_type<sf::Texture> m_textures;
+	asset_container_type<sf::Image> m_images;
 };

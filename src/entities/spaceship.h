@@ -1,15 +1,15 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "common/custom_texture.h"
-#include "common/game_entity.h"
+#include "entities/game_entity.h"
 #include "common/health_bar.h"
-#include "bullet/bullet_manager.h"
+#include "managers/bullet_manager.h"
+#include "managers/asset_manager.h"
 
 class Spaceship : public GameEntity
 {
 public:
-	Spaceship(const sf::Vector2u& window_size);
+	Spaceship(const sf::Vector2u& window_size, const AssetManager& asset_manager);
 
 	void update(const sf::Time& t1);
 	void draw(sf::RenderWindow& window) const;
@@ -28,7 +28,8 @@ private:
 	virtual bool PixelLevelCollision(const sf::Vector2f& point) const override;
 	virtual const sf::FloatRect GetBoundingBox() const override;
 
-	static const CustomTexture texture;		// One shared texture to speedup display operation
+	const sf::Texture& texture;
+	const sf::Image& texture_image;
 	sf::Sprite sprite;
 	sf::Vector2f speed;						// speed measured in Pixel per sec (orig top left)
 	const float accelleration_step;			// Acceleration step in pixel per sec^2

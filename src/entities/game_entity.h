@@ -2,7 +2,6 @@
 
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics.hpp>
-#include "custom_texture.h"
 
 class GameEntity 
 {

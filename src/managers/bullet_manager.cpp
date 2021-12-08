@@ -1,4 +1,4 @@
-#include "bullet/bullet_manager.h"
+#include "managers/bullet_manager.h"
 
 BulletManager::BulletManager()
 {
@@ -13,8 +13,8 @@ const Bullet& BulletManager::create_bullet(const sf::Vector2f& position, float r
 void BulletManager::update(const sf::Time& t1)
 {
 	// Remove all useless bullets
-	static const auto remove_if_lambda = [](const Bullet& b) { return !b.IsAlive(); };
-	std::remove_if(bullets.begin(), bullets.end(), remove_if_lambda);
+	static const auto remove_lamda = [](const Bullet& b) { return !b.IsAlive(); };
+	std::remove_if(bullets.begin(), bullets.end(), remove_lamda);
 
 	for (auto& b : bullets)
 	{

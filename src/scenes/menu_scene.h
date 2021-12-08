@@ -7,8 +7,8 @@
 #include <string>
 #include "scene.h"
 #include "game_engine/game_engine.h"
-#include "asteroid/asteroid_manager.h"
-#include "asset_manager/asset_manager.h"
+#include "managers/asteroid_manager.h"
+#include "managers/asset_manager.h"
 
 class MenuScene : public Scene
 {

@@ -1,13 +1,10 @@
 #include "health_bar.h"
 
-const CustomFont HealthBar::font{ "images/AtariClassic.ttf" };
-//const CustomTexture HealthBar::texture{ "images/health_bar.png" };
-//const int HealthBar::BAR_NUMBER = 10;
 const int HealthBar::BAR_WIDTH = 250;
 const int HealthBar::BAR_HEIGHT = 20;
 const int HealthBar::CHAR_SIZE = 12;
 
-HealthBar::HealthBar(int max_health, int decrease_step):
+HealthBar::HealthBar(const AssetManager& asset_manager, int max_health, int decrease_step):
 	max_health(max_health),
 	decrease_step(decrease_step),
 	current_health(max_health),
@@ -16,7 +13,7 @@ HealthBar::HealthBar(int max_health, int decrease_step):
 	text()
 {
 	// set the string to display
-	text.setFont(font);
+	text.setFont(asset_manager.GetFont("atari"));
 	text.setString("HP: ");
 	text.setCharacterSize(CHAR_SIZE);	// in pixels, not points!
 	text.setFillColor(sf::Color::White);

@@ -5,8 +5,6 @@
 #include <array>
 #include "asteroid.h"
 
-const CustomTexture Asteroid::texture{ "./images/asteroid.png" };
-
 // Compute a random spawn point external to the windows
 static sf::Vector2f compute_random_spawn_point(const sf::Vector2u& windows_size)
 {
@@ -65,8 +63,10 @@ static sf::Vector2f compute_random_spawn_point(const sf::Vector2u& windows_size)
 }
 
 // Initialize asteroid with random speed and rot_speed
-Asteroid::Asteroid(const sf::Vector2u& windows_size) :
+Asteroid::Asteroid(const sf::Vector2u& windows_size, const AssetManager& asset_manager) :
 	GameEntity(),
+	texture(asset_manager.GetTexture("asteroid")),
+	texture_image(asset_manager.GetImage("asteroid")),
 	sprite(),
 	alive(true)
 {
@@ -99,6 +99,26 @@ Asteroid::Asteroid(const sf::Vector2u& windows_size) :
 	sprite.setScale(scale, scale);
 }
 
+Asteroid& Asteroid::operator=(const Asteroid& other)
+{
+	GameEntity::operator=(other);
+	sprite = other.sprite;
+	speed = other.speed;
+	rot_speed = other.rot_speed;
+	alive = other.alive;
+	return *this;
+}
+
+Asteroid& Asteroid::operator=(Asteroid&& other)
+{
+	GameEntity::operator=(std::move(other));
+	sprite = std::move(other.sprite);
+	speed = other.speed;
+	rot_speed = other.rot_speed;
+	alive = other.alive;
+	return *this;
+}
+
 void Asteroid::update(const sf::Time& t1)
 {
 	// Update position using speed along x and y
@@ -124,7 +144,7 @@ void Asteroid::HasBeenHit()
 bool Asteroid::PixelLevelCollision(const sf::Vector2f& point) const
 {
 	// Get the images of the two sprites
-	const sf::Image& image = texture.GetImage();
+	const sf::Image& image = texture_image;
 
 	// Get raw image buffer and image size
 	// The returned value of GetPixelPtr points to an array of RGBA pixels made of 8 bits integers components

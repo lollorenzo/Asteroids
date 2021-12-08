@@ -4,8 +4,8 @@ PlayScene::PlayScene(GameEngine* game_engine, sf::RenderWindow* window, const As
 	Scene(game_engine, window),
 	m_asset_manager(asset_manager),
 	m_clock(),
-	m_asteroid_manager(window->getSize()),
-	m_spaceship(window->getSize()) { }
+	m_asteroid_manager(window->getSize(), asset_manager),
+	m_spaceship(window->getSize(), asset_manager) { }
 
 void PlayScene::Update()
 {

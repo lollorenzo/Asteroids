@@ -5,7 +5,7 @@
 #include <memory>
 #include <SFML/Graphics.hpp>
 #include "scenes/scene.h"
-#include "asset_manager/asset_manager.h"
+#include "managers/asset_manager.h"
 
 enum class SceneId
 {

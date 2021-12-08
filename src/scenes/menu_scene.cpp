@@ -7,7 +7,7 @@ MenuScene::MenuScene(GameEngine* game_engine, sf::RenderWindow* window, const As
 	m_asset_manager(asset_manager),
 	m_background(),
 	m_clock(),
-	m_asteroid_manager(window->getSize()),
+	m_asteroid_manager(window->getSize(), asset_manager),
 	m_current_menu_voice(0)
 {
 	// Create an opaque rectangle shape over the entire window

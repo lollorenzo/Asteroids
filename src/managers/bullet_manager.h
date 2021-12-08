@@ -2,7 +2,7 @@
 
 #include <list>
 #include <SFML/System/Time.hpp>
-#include "bullet.h"
+#include "entities/bullet.h"
 
 class BulletManager {
 public:

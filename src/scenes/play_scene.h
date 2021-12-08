@@ -3,9 +3,9 @@
 #include <SFML/System/Time.hpp>
 #include "scene.h"
 #include "game_engine/game_engine.h"
-#include "spaceship/spaceship.h"
-#include "asteroid/asteroid_manager.h"
-#include "asset_manager/asset_manager.h"
+#include "entities/spaceship.h"
+#include "managers/asteroid_manager.h"
+#include "managers/asset_manager.h"
 
 class PlayScene : public Scene
 {
