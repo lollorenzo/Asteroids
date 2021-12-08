@@ -14,7 +14,7 @@ void BulletManager::update(const sf::Time& t1)
 {
 	// Remove all useless bullets
 	static const auto remove_lamda = [](const Bullet& b) { return !b.IsAlive(); };
-	std::remove_if(bullets.begin(), bullets.end(), remove_lamda);
+	bullets.remove_if(remove_lamda);
 
 	for (auto& b : bullets)
 	{

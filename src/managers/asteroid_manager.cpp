@@ -23,7 +23,7 @@ void AsteroidManager::update(const sf::Time& t1)
 
 	// Destroy destroyable asteroids
 	static const auto remove_lambda = [](const Asteroid& a) { return !a.IsAlive(); };
-	std::remove_if(asteroids.begin(), asteroids.end(), remove_lambda);
+	asteroids.remove_if(remove_lambda);
 
 	// Create new Asteroids
 	time_elapsed_acc += t1.asSeconds();

@@ -10,8 +10,11 @@ const float Bullet::lifetime{ 1.5f };
 
 // Initialize asteroid with random speed and rot_speed
 Bullet::Bullet(const sf::Vector2f& position, float rotation) :
+	GameEntity(),
 	shape(4.0f),
-	time_elapsed(0)
+	speed(),
+	time_elapsed(0),
+	alive(true)
 {
 	// Compute the speed vector starting from the speed module and the angle
 	static const float DEG_RAD_SCALE_FACTOR = (3.1415f / 180);

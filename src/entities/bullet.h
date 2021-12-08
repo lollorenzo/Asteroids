@@ -7,13 +7,13 @@ class Bullet : public GameEntity
 {
 public:
 	Bullet(const sf::Vector2f& position, float rotation);
+
 	void update(const sf::Time& t1);
 	void draw(sf::RenderWindow& window) const;
 	bool IsAlive() const { return alive; }
 
 	// Inherited via GameEntity
 	virtual void HasBeenHit() override;
-
 private:
 	// Inherited via GameEntity
 	virtual bool PixelLevelCollision(const sf::Vector2f& point) const override;
@@ -24,5 +24,5 @@ private:
 	static const float speed_module;
 	static const float lifetime;
 	float time_elapsed;
-	bool alive;								// :-)
+	bool alive;
 };

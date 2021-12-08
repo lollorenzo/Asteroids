@@ -82,7 +82,6 @@ void Spaceship::shoot(const sf::Time& t1)
 		if (time_accumulator > firing_frequency)
 		{
 			// Compute the spawn point of the bullet
-			static const float DEG_RAD_SCALE_FACTOR = (3.1415f / 180);
 			const float rad_rotation = (sprite.getRotation() * DEG_RAD_SCALE_FACTOR);
 			const sf::Vector2f distance_versor{ std::cos(rad_rotation), std::sin(rad_rotation) };
 			const sf::Vector2f distance = distance_versor * ((texture.getSize().x * sprite.getScale().x) / 2.0f);
