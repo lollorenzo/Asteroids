@@ -67,6 +67,7 @@ static sf::Vector2f compute_random_spawn_point(const sf::Vector2u& windows_size)
 // Initialize asteroid with random speed and rot_speed
 Asteroid::Asteroid(const sf::Vector2u& windows_size) :
 	GameEntity(),
+	sprite(),
 	alive(true)
 {
 	// Compute the starting random point
@@ -120,7 +121,41 @@ void Asteroid::HasBeenHit()
 	return;
 }
 
-const sf::Image& Asteroid::GetImage() const
+bool Asteroid::PixelLevelCollision(const sf::Vector2f& point) const
 {
-	return texture.GetImage();
+	// Get the images of the two sprites
+	const sf::Image& image = texture.GetImage();
+
+	// Get raw image buffer and image size
+	// The returned value of GetPixelPtr points to an array of RGBA pixels made of 8 bits integers components
+	// The size of the array is width * height * 4.
+	const sf::Vector2u& image_size(image.getSize());
+	const sf::Uint8* pix_ptr = image.getPixelsPtr();
+
+	// Get the inverse transform from the sprites
+	const sf::Transform& inverse_t(sprite.getInverseTransform());
+
+	const sf::Vector2f original_point = inverse_t.transformPoint(point);
+
+	const bool valid = original_point.x > 0 && original_point.y > 0 &&
+		original_point.x < image_size.x && original_point.y < image_size.y;
+
+	if (valid)
+	{
+		// Compute the pixel idx and check the image transparency value
+		static const auto FromPointToIdx = [](int x, int y, int width) { return ((y * width + x) * 4) + 3; };
+		const int idx = FromPointToIdx(static_cast<int>(original_point.x), static_cast<int>(original_point.y), static_cast<int>(image_size.x));
+
+		if (pix_ptr[idx] > 0)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+const sf::FloatRect Asteroid::GetBoundingBox() const
+{
+	return sprite.getGlobalBounds();
 }

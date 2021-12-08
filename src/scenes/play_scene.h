@@ -20,6 +20,8 @@ public:
 	virtual void Play() override;
 
 private:
+	void ManageCollisions();
+
 	sf::Clock m_clock;
 	const AssetManager& m_asset_manager;
 	AsteroidManager m_asteroid_manager;

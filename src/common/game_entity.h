@@ -7,14 +7,11 @@
 class GameEntity 
 {
 public:
-	const sf::Sprite& GetSprite() const { return sprite; };
 	void CheckCollision(GameEntity& other);
 	virtual void HasBeenHit() = 0;
 
 protected:
-	bool PixelLevelCollision(const GameEntity& other) const;
-	virtual const sf::Image& GetImage() const = 0;
-
-	sf::Sprite sprite;
+	virtual bool PixelLevelCollision(const sf::Vector2f& point) const = 0;
+	virtual const sf::FloatRect GetBoundingBox() const = 0;
 };
 

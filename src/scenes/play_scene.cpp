@@ -15,6 +15,8 @@ void PlayScene::Update()
 	sf::Time time_elapsed = m_clock.restart();
 	m_asteroid_manager.update(time_elapsed);
 	m_spaceship.update(time_elapsed);
+
+	ManageCollisions();
 }
 
 void PlayScene::Render() const
@@ -48,4 +50,15 @@ void PlayScene::Play()
 {
 	m_paused = false;
 	m_clock.restart();
+}
+
+void PlayScene::ManageCollisions()
+{
+	for (auto& a : m_asteroid_manager.get_asteroids())
+	{
+		if (a.IsAlive())
+		{
+			m_spaceship.CheckBulletCollision(a);
+		}
+	}
 }

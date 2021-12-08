@@ -32,11 +32,17 @@ set(
     # Action
     ${CMAKE_CURRENT_LIST_DIR}/src/action/action.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/action/action.h
-
+    # Asteroids
     ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid.h
     ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid_manager.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/asteroid/asteroid_manager.h
+    # Bullets
+    ${CMAKE_CURRENT_LIST_DIR}/src/bullet/bullet.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/bullet/bullet.h
+    ${CMAKE_CURRENT_LIST_DIR}/src/bullet/bullet_manager.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/src/bullet/bullet_manager.h
+
     ${CMAKE_CURRENT_LIST_DIR}/src/spaceship/spaceship.cpp
     ${CMAKE_CURRENT_LIST_DIR}/src/spaceship/spaceship.h
 )
